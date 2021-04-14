@@ -1,7 +1,7 @@
 # AlhambraII Display
 
 Demo project for driving SSD1331 display connected to Lattice AlhambraII board from PC.
-Is based in Reostat project that was for the board ICEstick https://github.com/reostat/usb_displ
+Is based in Oleg Stepanov project that was for the board ICEstick https://github.com/reostat/usb_displ
 
 ## Required tools
 - PC code: C compiler, make and cmake
