@@ -1,13 +1,13 @@
-# AlhambraII PMOD Display
+# AlhambraII Display
 
-Demo project for driving SSD1331 PMOD display connected to Lattice AlhambraII board from PC.
+Demo project for driving SSD1331 display connected to Lattice AlhambraII board from PC.
+Is based in Reostat project that was for the board ICEstick https://github.com/reostat/usb_displ
 
 ## Required tools
 - PC code: C compiler, make and cmake
 - FPGA code: yosys, arachne_pnr, icebox tools (icepack, icetime, iceprog), iverilog, gtkwave
 
 ## Build
-Don't forget to `git submodule init && git submodule update` after cloning.
 - For FPGA side: `cd fpga_code` then `make all` then `make prog`
 - For PC side: `cd pc_code`, `mkdir build`, `cd build`, `cmake .. && make`
 
