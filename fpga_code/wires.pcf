@@ -6,15 +6,15 @@ set_io LED3 43  # red
 set_io LED4 42  # red
 set_io LED5 41  # green
 
-set_io oled_cs 114
+set_io oled_cs 118
 set_io oled_sdin 115
-set_io oled_sclk 116
+set_io oled_sclk 114
 set_io oled_d_cn 117
-set_io oled_resn 118
+set_io oled_resn 116
 set_io oled_vccen 1
 set_io oled_pmoden 2
 
 set_io FTDI_GPIOL0 60
-set_io FTDI_CS 56
+set_io FTDI_CS 52
 set_io FTDI_DO 61
-set_io FTDI_SK 48
+set_io FTDI_SK 56
