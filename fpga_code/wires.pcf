@@ -14,7 +14,7 @@ set_io oled_resn 116
 set_io oled_vccen 1
 set_io oled_pmoden 2
 
-set_io FTDI_GPIOL0 60
-set_io FTDI_CS 52
-set_io FTDI_DO 61
-set_io FTDI_SK 56
+set_io FTDI_DTRn 52
+set_io FTDI_CTSn 56
+set_io FTDI_Tx 62
+set_io FTDI_Rx 61

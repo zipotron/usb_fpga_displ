@@ -15,10 +15,10 @@ module top #(
     output wire oled_pmoden,
 
     // FTDI MPSSE wires
-    input wire FTDI_GPIOL0,
-    input wire FTDI_CS,
-    input wire FTDI_DO,
-    input wire FTDI_SK,
+    input wire FTDI_DTRn,
+    input wire FTDI_CTSn,
+    input wire FTDI_Tx,
+    input wire FTDI_Rx,
 
     // LED wires
     output wire LED1,
@@ -42,18 +42,18 @@ assign LED5 = !reset; // just to see if we're on
 // oled init wiring
 wire pwr_sdata, pwr_sclk, pwr_cs, pwr_d_cn, pwr_on_done;
 // once oled init is done we let FTDI drive the display
-assign oled_sclk = pwr_on_done ? FTDI_SK : pwr_sclk;
-assign oled_sdin = pwr_on_done ? FTDI_DO : pwr_sdata;
-assign oled_cs   = pwr_on_done ? FTDI_CS : pwr_cs;
-assign oled_d_cn = pwr_on_done ? FTDI_GPIOL0 : pwr_d_cn;
+assign oled_sclk = pwr_on_done ? FTDI_Rx : pwr_sclk;
+assign oled_sdin = pwr_on_done ? FTDI_Tx : pwr_sdata;
+assign oled_cs   = pwr_on_done ? FTDI_CTSn : pwr_cs;
+assign oled_d_cn = pwr_on_done ? FTDI_DTRn : pwr_d_cn;
 
 reg [6:0] bit_transfered = 0;
-always @(negedge FTDI_SK) bit_transfered <= bit_transfered + 1;
+always @(negedge FTDI_Rx) bit_transfered <= bit_transfered + 1;
 
-assign LED4 = ~FTDI_CS ? bit_transfered[6] : pwr_on_done;
-assign LED2 = ~FTDI_CS;
-assign LED1 = ~FTDI_CS & oled_d_cn;
-assign LED3 = ~FTDI_CS & ~oled_d_cn;
+assign LED4 = ~FTDI_CTSn ? bit_transfered[6] : pwr_on_done;
+assign LED2 = ~FTDI_CTSn;
+assign LED1 = ~FTDI_CTSn & oled_d_cn;
+assign LED3 = ~FTDI_CTSn & ~oled_d_cn;
 
 pwr_on_ctl_mem #(
     .CLK_FREQ(CLK_FREQ),
